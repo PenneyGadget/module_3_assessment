@@ -1,4 +1,5 @@
 class BestBuyService
+  attr_reader :connection
 
   def initialize
     @connection = Faraday.new(:url => "https://api.bestbuy.com") do |faraday|
