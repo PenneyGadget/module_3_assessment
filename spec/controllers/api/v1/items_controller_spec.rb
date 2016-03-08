@@ -22,4 +22,38 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(response.status).to eq(200)
     end
   end
+
+  describe "GET #show" do
+    let(:json_response) { JSON.parse(response.body) }
+
+    it "returns specified item in json" do
+      item = create(:item)
+
+      get :show, id: item.id, format: :json
+
+      expect(json_response["name"]).to eq(item.name)
+      expect(json_response["description"]).to eq(item.description)
+      expect(json_response["image_url"]).to eq(item.image_url)
+      expect(json_response.count).to eq(1)
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe "DELETE #destroy" do
+    let(:json_response) { JSON.parse(response.body) }
+
+    it "returns a 204 json response when an item is deleted" do
+      item = create(:item)
+
+      get :show, id: item.id, format: :json
+
+      expect(json_response["name"]).to eq(item.name)
+      expect(json_response["description"]).to eq(item.description)
+      expect(json_response["image_url"]).to eq(item.image_url)
+      expect(json_response.count).to eq(1)
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+  end
 end

@@ -7,9 +7,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do
-      resources :items, only: [:index, :show] do
+      resources :items, only: [:index, :show, :destroy] do
         get '/items', to: 'items#index'
         get '/items', to: 'items#show'
+        get '/items', to: 'items#delete'
       end
     end
   end
