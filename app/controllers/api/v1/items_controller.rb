@@ -11,10 +11,9 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    if @item.destroy
-      respond_with status: 204
+    @item.destroy
+    respond_with status: 204
       # render json: {}, status: 204
-    end
   end
 
   private
