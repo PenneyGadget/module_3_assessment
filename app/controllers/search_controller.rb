@@ -3,6 +3,8 @@ class SearchController < ApplicationController
   end
 
   def create
-    
+    bbs = BestBuyService.new
+    bbs.find_product(product)
   end
+
 end
