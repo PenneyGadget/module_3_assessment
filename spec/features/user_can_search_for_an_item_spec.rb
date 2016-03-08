@@ -4,8 +4,8 @@ RSpec.feature "Root page search", :type => :feature do
   scenario "A user can search for an item" do
     VCR.use_cassette("root_page_search") do
       visit root_path
-      save_and_open_page
-      fill_in "Search for an item:", with: "Sennheiser"
+
+      fill_in "Product", with: "Sennheiser"
       click_on "Search!"
 
       expect(current_path).to eq("/search")
