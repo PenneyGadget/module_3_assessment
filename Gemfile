@@ -13,12 +13,26 @@ gem "haml-rails"
 gem "therubyracer"
 gem "less-rails-bootstrap"
 gem "minitest-rails"
+gem "figaro"
+gem "pg"
+gem "responders"
 
 group :development do
   gem "spring"
 end
 
 group :development, :test do
-  gem "minitest-rails-capybara"
+  gem 'rspec-rails', '~> 3.0'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'better_errors'
   gem "pry", :require => "pry"
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+  gem 'simplecov'
 end
