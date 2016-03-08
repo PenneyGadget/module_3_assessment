@@ -7,6 +7,10 @@ class BestBuyService
     end
   end
 
+  def find_product
+    parse(connection.get("/vi"))
+  end
+
   private
 
   def parse

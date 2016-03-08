@@ -1,0 +1,8 @@
+<h1>Search for an item:</h1>
+
+<%= form_for @item do |f| %>
+  <%= f.label :items %><br>
+  <%= f.text_area :items %>
+
+  <%= f.sumbit "Search!",  %>
+<% end %>

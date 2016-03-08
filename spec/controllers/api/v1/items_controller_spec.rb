@@ -60,7 +60,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "POST #create" do
     let(:json_response) { JSON.parse(response.body) }
 
-    it "returns a 204 json response when an item is deleted" do
+    xit "returns a 204 json response when an item is deleted" do
 
       post :create, name: "Apple",
                     description: "Yummy",
