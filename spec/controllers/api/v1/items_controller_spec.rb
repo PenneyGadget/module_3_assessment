@@ -52,12 +52,25 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
 
       delete :destroy, id: item.id, format: :json
 
-      # expect(json_response["name"]).to eq(item.name)
-      # expect(json_response["description"]).to eq(item.description)
-      # expect(json_response["image_url"]).to eq(item.image_url)
-      # expect(json_response.count).to eq(1)
-      # expect(response).to be_success
+      expect(response).to be_success
       expect(response.status).to eq(204)
+    end
+  end
+
+  describe "POST #create" do
+    let(:json_response) { JSON.parse(response.body) }
+
+    it "returns a 204 json response when an item is deleted" do
+
+      post :create, name: "Apple",
+                    description: "Yummy",
+                    image_url: "http://robohash.org/6.png?set=set2&bgset=bg1&size=200x200",
+                    created_at: "2016-02-23T00:00:00.000Z",
+                    updated_at: "2016-02-23T00:00:00.000Z",
+                    format: :json
+
+      expect(response).to be_success
+      expect(response.status).to eq(201)
     end
   end
 end

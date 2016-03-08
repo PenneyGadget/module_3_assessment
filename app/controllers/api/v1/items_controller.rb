@@ -9,11 +9,19 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.find(params[:id])
   end
 
+  def create
+    @item = Item.create(item_params)
+    if @item.save
+      respond_with status: 201
+    else
+      render json: @item.errors
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
     respond_with status: 204
-      # render json: {}, status: 204
   end
 
   private
