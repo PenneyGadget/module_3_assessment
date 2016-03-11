@@ -1,4 +1,4 @@
-class Api::V1::ItemsController < ApplicationController
+class Api::V1::ItemsController < Api::V1::ApiController
   respond_to :json
 
   def index
@@ -9,19 +9,12 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.find(params[:id])
   end
 
-  # def create
-  #   @item = Item.create(item_params)
-  #   if @item.save
-  #     respond_with status: 201
-  #   else
-  #     render json: @item.errors
-  #   end
-  # end
+  def create
+    respond_with Item.create(item_params)
+  end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    respond_with status: 204
+    respond_with Item.find(params[:id]).destroy
   end
 
   private
@@ -29,8 +22,6 @@ class Api::V1::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name,
                                  :description,
-                                 :image_url,
-                                 :created_at,
-                                 :updated_at)
+                                 :image_url)
   end
 end

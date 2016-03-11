@@ -9,15 +9,13 @@ class BestBuyService
     end
   end
 
-  def find_product(product)
-    connection.get do |request|
-      request.url("/v1/products(longDescription=#{product}*)")
-    end
+  def find_products(product)
+    parse(connection.get("/v1/products(longDescription=#{product}*)"))
   end
 
   private
 
-  def parse
+  def parse(response)
     JSON.parse(response.body, symbolize_names: true)
   end
 end
