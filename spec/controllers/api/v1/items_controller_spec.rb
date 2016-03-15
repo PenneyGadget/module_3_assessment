@@ -60,17 +60,19 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "POST #create" do
     let(:json_response) { JSON.parse(response.body) }
 
-    xit "returns a 204 json response when an item is deleted" do
-
-      post :create, name: "Apple",
-                    description: "Yummy",
-                    image_url: "http://robohash.org/6.png?set=set2&bgset=bg1&size=200x200",
-                    created_at: "2016-02-23T00:00:00.000Z",
-                    updated_at: "2016-02-23T00:00:00.000Z",
-                    format: :json
+    it "returns a 201 json response and proper info when an item is created" do
+      post :create, format: :json,
+                    item: { name: "Apple",
+                            description: "Yummy",
+                            image_url: "http://robohash.org/6.png?set=set2&bgset=bg1&size=200x200",
+                          }
 
       expect(response).to be_success
       expect(response.status).to eq(201)
+
+      expect(json_response["name"]).to eq("Apple")
+      expect(json_response["description"]).to eq("Yummy")
+      expect(json_response["image_url"]).to eq("http://robohash.org/6.png?set=set2&bgset=bg1&size=200x200")
     end
   end
 end

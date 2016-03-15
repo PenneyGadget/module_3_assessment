@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Product Info for <u><%= params[:product] %></u>:</h1>
+  <h4>Your Search Returned <%= @products.count %> Items</h4><br>
   <% @products.each do |product| %>
     <u>Sku:</u> <%= product[:sku] %><br>
     <u>Name:</u> <%= product[:name] %><br>
