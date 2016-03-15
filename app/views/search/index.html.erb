@@ -1,3 +1,11 @@
 <div class="container">
-  <h1>Product Info:</h1>
+  <h1>Product Info for <u><%= params[:product] %></u>:</h1>
+  <% @products.each do |product| %>
+    <u>Sku:</u> <%= product[:sku] %><br>
+    <u>Name:</u> <%= product[:name] %><br>
+    <u>Customer Average Review:</u> <%= product[:customerReviewAverage] %><br>
+    <u>Description:</u> <%= product[:shortDescription] %><br>
+    <u>Sale Price:</u> $<%= product[:salePrice] %><br>
+    <%= image_tag product[:image] %><br><br><br>
+  <% end %>
 </div>

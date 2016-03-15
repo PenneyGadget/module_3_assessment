@@ -10,7 +10,7 @@ class BestBuyService
   end
 
   def find_products(product)
-    parse(connection.get("/v1/products(longDescription=#{product}*)"))
+    parse(connection.get("/v1/products(longDescription=#{product}*)?pageSize=15"))[:products]
   end
 
   private
